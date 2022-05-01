@@ -29,7 +29,7 @@ def get_sources():
     with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data = url.read()
         get_sources_response = json.loads(get_sources_data)
-        
+
         source_results = None
         
         if get_sources_response['sources']:
@@ -59,7 +59,8 @@ def process_news_results(source_lists):
         if url:
             source_object = Source(id,name,description,url,category,language,country)
             source_results.append(source_object)
-            
+
+
     return source_results
 
 def get_articles(id):
@@ -67,15 +68,17 @@ def get_articles(id):
     Function that gets the json response to our url request
     '''
     get_articles_url = articles_url.format(id,api_key)
-    
+
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
         get_articles_response = json.loads(get_articles_data)
+
         articles_results = None
-    
+        
         if get_articles_response['articles']:
             articles_results_list = get_articles_response['articles']
             articles_results = process_articles_results(articles_results_list)
+
 
     return articles_results
 
@@ -96,7 +99,7 @@ def process_articles_results(articles_lists):
         description = article_item.get('description')
         url = article_item.get('url')
         urlToImage = article_item.get('urlToImage')
-        publishedAt = article_item.get('publishesAt')
+        publishedAt = article_item.get('publishedAt')
         content = article_item.get('content')
         
         if urlToImage:

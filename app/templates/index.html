@@ -1,1 +1,15 @@
-<h1> {{title}} </h1> 
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+<!-- Styles block -->
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='CSS/index.css')}}">
+{% endblock %}
+<!-- content block -->
+{% block content %}
+    <marquee direction="right"><h1> {{title}} </h1></marquee>
+    
+    {{ macro.displaySourceList(source)}}
+
+{% endblock %}

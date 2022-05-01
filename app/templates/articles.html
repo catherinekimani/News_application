@@ -1,0 +1,19 @@
+{% block content %}
+<div id="articles">
+    <div class="row">
+        {% for articles in articles %}
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                    <p>
+                    <h2>{{articles.id}}</h2>
+
+                    <h5> {{articles.title}}</h5>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
