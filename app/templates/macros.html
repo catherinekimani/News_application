@@ -7,11 +7,10 @@
                 <div class="caption">
                 <p>
                     <h2>{{source.id}}</h2>
-                    
                     <h5> {{source.name}}</h5>
                     <p> {{source.description}}</p>
                     <p> Category: {{source.category}}</p>
-                    <a href="{{source.url}}"> Source url </a>
+                    <a href="{{source.url}}"> <button class="btn btn-danger"> ReadMore </button></a>
                 </p>
                 </div>
             </div>
@@ -19,4 +18,27 @@
         {% endfor %}
     </div>
     </div>
+{% endmacro %}
+
+{% macro displayArticlesList(articles_lists) %}
+<div id="articles">
+    <div class="row">
+        {% for articles in articles_lists %}
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                    <p>
+                    <img src="{{articles.urlToImage}}" alt="" width="80%">
+                    <h3> {{articles.title}}</h3>
+                    <h5> {{articles.author}}</h5>
+                    <p>{{articles.description}}</p>
+                    <p class="time"> PublishedAt: {{articles.publishedAt}}</p>
+                    <a href="{{articles.url}}"> <button class="btn btn-danger"> ReadMore </button></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endmacro %}

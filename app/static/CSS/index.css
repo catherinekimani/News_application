@@ -1,3 +1,6 @@
+.navbar a{
+    color: blue;
+}
 .row{
     background-color: aqua;
     
@@ -7,17 +10,22 @@ h1{
     text-align: center;
     font-weight: bold;
     color: black;
+    font-family: serif,sans-serif;
 }
 h2{
     color: red;
     font-weight: bold;
     font-size: 25px;
     text-decoration: underline;
+    font-family: serif,
+    sans-serif;
 }
 p{
     color: rgba(14, 10, 10, 0.924);
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
+    font-family: serif,
+    sans-serif;
 }
 
 .caption{
@@ -27,4 +35,28 @@ p{
 
 a :hover{
     background-color: rgb(255, 85, 47);
+}
+
+.btn{
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+}
+
+.time{
+    color: blue;
+}
+
+img{
+    margin-left: 10%;
+}
+
+h5 h3{
+    font-family: serif,
+    sans-serif;
+    font-weight: bold;
+}
+
+.api{
+    color: red;
 }

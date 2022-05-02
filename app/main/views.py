@@ -13,10 +13,10 @@ def index():
     
     return render_template('index.html',title = title,source= source)
 
-@main.route('/articles/<id>')
-def articles(id):
+@main.route('/articles')
+def articles():
     '''
     view articles page function that returns the articles objects and data'''
-    articles = get_articles(id)
+    articles = get_articles()
 
     return render_template('articles.html',articles=articles)
