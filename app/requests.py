@@ -2,7 +2,8 @@ from distutils.command.config import config
 from turtle import back, title
 from unicodedata import category
 import urllib.request,json
-from .models import Source,Articles #importing source class and articles class
+from .models import Source
+from .models import Articles #importing source class and articles class
 
 
 # getting api key
@@ -25,18 +26,18 @@ def get_sources():
     Function that gets the json response to our url request
     '''
     get_sources_url = base_url.format(api_key)
-    
+
     with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data = url.read()
         get_sources_response = json.loads(get_sources_data)
 
         source_results = None
-        
+
         if get_sources_response['sources']:
             source_results_list = get_sources_response['sources']
             source_results = process_news_results(source_results_list)
     return source_results
-        
+
 def process_news_results(source_lists):
     '''
     Function that processes the source result and transform them to a list of objects
@@ -63,11 +64,12 @@ def process_news_results(source_lists):
 
     return source_results
 
-def get_articles(id):
+def get_articles():
     '''
-    Function that gets the json response to our url request
+    Function that gets the json response from our url request
+    and returns all articles
     '''
-    get_articles_url = articles_url.format(id,api_key)
+    get_articles_url = articles_url.format(api_key)
 
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
@@ -78,7 +80,6 @@ def get_articles(id):
         if get_articles_response['articles']:
             articles_results_list = get_articles_response['articles']
             articles_results = process_articles_results(articles_results_list)
-
 
     return articles_results
 
@@ -91,16 +92,16 @@ def process_articles_results(articles_lists):
             articles_results: A list of artcicles objects
     '''
     articles_results = []
-    for article_item in articles_lists:
-        id = article_item.get('id')
-        name = article_item.get('name')
-        author = article_item.get('author')
-        title = article_item.get('title')
-        description = article_item.get('description')
-        url = article_item.get('url')
-        urlToImage = article_item.get('urlToImage')
-        publishedAt = article_item.get('publishedAt')
-        content = article_item.get('content')
+    for articles_item in articles_lists:
+        id = articles_item.get('id')
+        name = articles_item.get('name')
+        author = articles_item.get('author')
+        title = articles_item.get('title')
+        description = articles_item.get('description')
+        url = articles_item.get('url')
+        urlToImage = articles_item.get('urlToImage')
+        publishedAt = articles_item.get('publishedAt')
+        content = articles_item.get('content')
         
         if urlToImage:
             articles_object = Articles(id,name,author,title,description,url,urlToImage,publishedAt,content)
