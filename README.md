@@ -1,5 +1,11 @@
 # News Application
 
+### Home page
+![catherine](./app/static/images/home.png)
+
+### Articles Page
+![catherine](./app/static/images/articles.png)
+
 ##### By Catherine Kimani
 
 ### A Description of a News Application
